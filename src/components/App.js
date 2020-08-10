@@ -8,7 +8,7 @@ class App extends React.Component {
   componentDidMount() {
     const { store } = this.props;
     // we have to subsribe to make changes
-    this.forceUpdate();//forcefully updating the app component to render
+    this.forceUpdate(); //forcefully updating the app component to render
     store.subscribe(() => {
       console.log("UPDATED");
     });
@@ -19,8 +19,8 @@ class App extends React.Component {
   }
 
   render() {
-    const movies = this.props.store.getState();
-    console.log("RENDER")
+    const { list } = this.props.store.getState();
+    console.log("RENDER", this.props.store.getState());
     return (
       <div className="App">
         <Navbar />
@@ -30,7 +30,7 @@ class App extends React.Component {
             <div className="tab">Favourites</div>
           </div>
           <div className="list">
-            {movies.map((movie, index) => (
+            {list.map((movie, index) => (
               <MovieCard movie={movie} key={`movies-${index}`} />
             ))}
           </div>
