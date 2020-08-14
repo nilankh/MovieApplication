@@ -4,6 +4,8 @@ import {
   ADD_FAVOURITE,
   REMOVE_FROM_FAVOURITE,
   SET_SHOW_FAVOURITE,
+  ADD_SEARCH_RESULT,
+  ADD_MOVIE_TO_LIST,
 } from "../actions/index";
 
 const initialMoviesState = {
@@ -46,6 +48,11 @@ export function movies(state = initialMoviesState, action) {
         ...state,
         showFavourites: action.val,
       };
+    case ADD_MOVIE_TO_LIST:
+      return {
+        ...state,
+        list: [action.movie, ...state.list],
+      };
     default:
       return state;
   }
@@ -53,10 +60,25 @@ export function movies(state = initialMoviesState, action) {
 
 const initialSearchState = {
   result: {},
+  showSearchResults: false,
 };
 export function search(state = initialSearchState, action) {
-  console.log("SEARCH REDUCER");
-  return state;
+  // ADD_SEARCH_RESULT;
+  switch (action.type) {
+    case ADD_SEARCH_RESULT:
+      return {
+        ...state,
+        result: action.movie,
+        showSearchResults: true,
+      };
+    case ADD_MOVIE_TO_LIST:
+      return {
+        ...state,
+        showSearchResults: false,
+      };
+    default:
+      return state;
+  }
 }
 
 const initialRootState = {
@@ -71,6 +93,6 @@ const initialRootState = {
 // }
 
 export default combineReducers({
-  movies: movies,//internally called as movies(state.movies, action)
-  search: search,//internally called as search(state.search, action)
+  movies: movies, //internally called as movies(state.movies, action)
+  search: search, //internally called as search(state.search, action)
 });
