@@ -1,10 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
 import { data } from "../data";
 import Navbar from "./Navbar";
 import MovieCard from "./MovieCard";
 import { addMovies, setShowFavourite } from "../actions";
 // import { StoreContext } from "../index";
-import { connect } from "../index";
+// import { connect } from "../index";
 
 class App extends React.Component {
   componentDidMount() {
