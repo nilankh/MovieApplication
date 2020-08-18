@@ -51,6 +51,8 @@ class Provider extends React.Component {
     const { store } = this.props;
     return (
       <StoreContext.Provider value={store}>
+        {" "}
+        // jb v ye store value badlega tb tb app (COnsumer)re render hoga
         {this.props.children}
       </StoreContext.Provider>
     );

@@ -44,7 +44,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Navbar  search={search} />
+        <Navbar search={search} />
         <div className="main">
           <div className="tabs">
             <div
@@ -79,14 +79,23 @@ class App extends React.Component {
   }
 }
 
-
-class AppWrapper extends React.Component{
+class AppWrapper extends React.Component {
   render() {
-    return(
-      <StoreContext.Consumer >
-      {(store) => <App store={store} /> }
-    </StoreContext.Consumer>
-    )
+    return (
+      <StoreContext.Consumer>
+        {(store) => <App store={store} />}
+      </StoreContext.Consumer>
+    );
   }
 }
-export default AppWrapper;
+
+function callback(state) {
+  return {
+    movies: state.movies,
+    search: state.movies,
+  };
+}
+
+const connectedAppComponent = connect(callback)(App);
+
+export default connectedAppComponent;
