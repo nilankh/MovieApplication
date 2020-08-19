@@ -91,6 +91,7 @@ class App extends React.Component {
 //   }
 // }
 
+// what data we want from store this callback will tell
 function mapStateToProps(state) {
   return {
     movies: state.movies,
@@ -99,5 +100,5 @@ function mapStateToProps(state) {
 }
 
 const connectedAppComponent = connect(mapStateToProps)(App);
-
+// i created a connect function and i have told connect function and told i want these properties(jo upar mapStateToProps me defined h)from the store as props inside my app component and whole it will return new componebt which we are exporting in last line connectAppCompoent.......(App) ye jo likhe h iska mtlb h, the component we want all the data as in props(jo mapStateToProps) me defined h
 export default connectedAppComponent;
